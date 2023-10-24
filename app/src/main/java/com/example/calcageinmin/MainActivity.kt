@@ -4,12 +4,14 @@ import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.DatePicker
 import android.widget.TextView
 import android.widget.Toast
 import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var datePicker: DatePicker
     private lateinit var resultTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btnDatePicker : Button = findViewById(R.id.btnDayPicker)
+        val resultTextView : TextView = findViewById(R.id.DaysText)
         btnDatePicker.setOnClickListener{
             Toast.makeText(this, "Picking date", Toast.LENGTH_SHORT).show()
             showDatePickerDialog()
@@ -24,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showDatePickerDialog() {
+        val resultTextView : TextView = findViewById(R.id.DaysText)
         val dateTextView : TextView = findViewById(R.id.date)
 
         val calendar = Calendar.getInstance()
