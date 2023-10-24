@@ -4,14 +4,12 @@ import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.DatePicker
 import android.widget.TextView
 import android.widget.Toast
 import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var datePicker: DatePicker
     private lateinit var resultTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,15 +17,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btnDatePicker : Button = findViewById(R.id.btnDayPicker)
-        val resultTextView : TextView = findViewById(R.id.DaysText)
         btnDatePicker.setOnClickListener{
+            Toast.makeText(this, "Picking date", Toast.LENGTH_SHORT).show()
             showDatePickerDialog()
         }
     }
 
     private fun showDatePickerDialog() {
-        val btnDatePicker : Button = findViewById(R.id.btnDayPicker)
-        val resultTextView : TextView = findViewById(R.id.DaysText)
         val dateTextView : TextView = findViewById(R.id.date)
 
         val calendar = Calendar.getInstance()
@@ -35,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
+
+        //Function to display the date and age in days
         val datePickerDialog = DatePickerDialog(this,
             DatePickerDialog.OnDateSetListener { view, selectedYear, selectedMonth, selectedDay ->
                 val selectedDate = Calendar.getInstance()
